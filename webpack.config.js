@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
-    port: 3001,
+    port: 3002,
     hot: true,
   },
   plugins: [
@@ -25,7 +25,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?!(@expo\/vector-icons|react-native-vector-icons))/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -63,6 +63,9 @@ module.exports = {
       '@react-native-google-signin/google-signin': path.resolve(__dirname, 'src/mocks/index.ts'),
       'react-native-fbsdk-next': path.resolve(__dirname, 'src/mocks/index.ts'),
       '../services/authService': path.resolve(__dirname, 'src/services/authService.web.ts'),
+      '@react-native-vector-icons/material-design-icons': path.resolve(__dirname, 'src/mocks/index.ts'),
+      '@expo/vector-icons/MaterialCommunityIcons': path.resolve(__dirname, 'src/mocks/index.ts'),
+      '@expo/vector-icons': path.resolve(__dirname, 'src/mocks/index.ts'),
     },
   },
 };

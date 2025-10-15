@@ -1,5 +1,7 @@
 // Mock implementations for web compatibility
 
+import React from 'react';
+
 // Mock AsyncStorage
 export const AsyncStorage = {
   getItem: async (key: string) => {
@@ -49,10 +51,38 @@ export const AccessToken = {
   getCurrentAccessToken: async () => null,
 };
 
+// Mock Icon Components
+const MockIcon = ({ name, size = 24, color = '#000', ...props }: any) => {
+  return React.createElement('span', {
+    ...props,
+    style: {
+      display: 'inline-block',
+      width: size,
+      height: size,
+      backgroundColor: color,
+      borderRadius: '50%',
+      ...props.style,
+    },
+    title: name,
+  }, '•');
+};
+
+// Export mock icon as default for various icon libraries
+export default MockIcon;
+
+// Named exports for different icon types
+export const MaterialCommunityIcons = MockIcon;
+export const MaterialIcons = MockIcon;
+export const Ionicons = MockIcon;
+export const FontAwesome = MockIcon;
+export const Feather = MockIcon;
+
 // Mock other modules as needed
 export const mockModules = {
   AsyncStorage,
   GoogleSignin,
   LoginManager,
   AccessToken,
+  MaterialCommunityIcons,
+  MaterialIcons,
 };
